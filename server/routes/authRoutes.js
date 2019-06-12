@@ -1,7 +1,7 @@
 const passport = require('passport');
 
 module.exports = app => {
-    app.get('/auth/google',
+    app.get('/auth/google/',
         passport.authenticate('google', {
             scope: ['profile', 'email ']
         }));
@@ -12,16 +12,15 @@ module.exports = app => {
         }),
         function (req, res) {
             // Successful authentication, redirect home.
-            res.redirect('/');
+            res.redirect('/surveys');
         });
 
     app.get('/api/logout', (req, res) =>{
         req.logout();
-        res.send(req.user);
+        res.redirect('/');
     });
 
-    app.get('/api/cur_user', (req, res) => {
+    app.get('/api/user', (req, res) => {
         res.send(req.user);
     });
-
 };  
