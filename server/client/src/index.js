@@ -18,3 +18,6 @@ ReactDOM.render(
     </Provider>
 , 
 document.querySelector('#root')); 
+
+console.log('stripe key is ', process.env.REACT_APP_STRIPE_KEY);
+console.log('dev mode is ', process.env.NODE_ENV);
