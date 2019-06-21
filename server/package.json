@@ -7,8 +7,8 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "webhook": "./sendgrid_webhook.sh"
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook \"",
+    "webhook": "forever sendgrid_webhook.js"
   },
   "author": "",
   "license": "ISC",
@@ -26,5 +26,8 @@
     "path-parser": "^4.2.0",
     "sendgrid": "^5.2.3",
     "stripe": "^7.1.0"
+  },
+  "devDependencies": {
+    "forever": "^1.0.0"
   }
 }
