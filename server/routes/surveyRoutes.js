@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const { Path } = require('path-parser');
+const {Path} = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
@@ -24,7 +24,7 @@ module.exports = app => {
 
   app.post('/api/surveys/webhooks', (req, res) => {
     const p = new Path('/api/surveys/:surveyId/:choice');
-    
+
     _.chain(req.body)
       .map(({ email, url }) => {
         const match = p.test(new URL(url).pathname);
@@ -66,6 +66,7 @@ module.exports = app => {
       dateSent: Date.now()
     });
 
+    // Great place to send an email!
     const mailer = new Mailer(survey, surveyTemplate(survey));
 
     try {
